@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--name指定项目名称，default指定默认的运行任务，basedir指定工作的根目录-->
+<project name="HelloWorld" default="run" basedir=".">
+<!--配置在该文档中会用到的属性key、value-->
+<property name="src" value="src"/>
+<property name="dest" value="build/classes"/>
+<property name="jar_" value="helloworld.jar"/>
+<!--真正需要执行的任务，用target标签指明-->
+<!--每个target都有一个唯一的name值-->
+<target name="init">
+   <!--具体要做的事情，创建目录-->
+   <mkdir dir="${dest}"/>
+</target>
+<!--target标签中的depends指明该任务需要依赖的其他任务，compile任务执行之前需要先执行init任务-->
+<target name="compile" depends="init">
+   <!--srcdir指明源码的位置，destdir指明编译后的存放路径-->
+   <javac srcdir="${src}" destdir="${dest}"/>
+</target>
+<!--打成jar包，jarfile指明打包的文件名，basedir指明被归档的文件名-->
+<target name="build" depends="compile">
+   <jar jarfile="${jar_}" basedir="${dest}"/>
+</target>
+<!--运行jar包-->
+<target name="run" depends="build">
+   <java classname="HelloWorld" classpath="${jar_}"/>
+</target>
+<!--删除生成的文件，dir表示删除的目录，file表示删除的文件-->
+<target name="clean">
+   <delete dir="${dest}" />
+   <delete file="${jar_}" />
+</target>
+<!---多个依赖中间使用“，”隔开-->
+<!--在一个target中可以调用其他的target，只需要写明ant标签和该标签的target属性，即目标target的name属性值-->
+<target name="rerun" depends="clean,run">
+   <ant target="clean" />
+   <ant target="run" />
+</target>
+</project>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="0" hostname="ubuntu" id="0" name="HelloWorldTest" package="" skipped="0" tests="1" time="1.091" timestamp="2019-11-10T08:29:17">
+      <properties>
+          <property name="ant.project.invoked-targets" value="test" />
+
+          <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+
+          <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64" />
+
+          <property name="java.vm.version" value="25.222-b10" />
+
+          <property name="jar_" value="build/jar" />
+
+          <property name="ant.library.dir" value="/home/lucky/Desktop/ant/apache-ant-1.10.7/lib" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.10.7 compiled on September 1 2019" />
+
+          <property name="ant.java.version" value="1.8" />
+
+          <property name="java.vm.vendor" value="Private Build" />
+
+          <property name="java.vendor.url" value="http://java.oracle.com/" />
+
+          <property name="path.separator" value=":" />
+
+          <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+
+          <property name="file.encoding.pkg" value="sun.io" />
+
+          <property name="user.country" value="US" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="sun.os.patch.level" value="unknown" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="user.dir" value="/home/lucky/Desktop/HelloWorld" />
+
+          <property name="ant.file.HelloWorld" value="/home/lucky/Desktop/HelloWorld/build.xml" />
+
+          <property name="java.runtime.version" value="1.8.0_222-8u222-b10-1ubuntu1~18.04.1-b10" />
+
+          <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment" />
+
+          <property name="basedir" value="/home/lucky/Desktop/HelloWorld" />
+
+          <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/endorsed" />
+
+          <property name="os.arch" value="amd64" />
+
+          <property name="report_" value="build/report" />
+
+          <property name="ant.project.default-target" value="test" />
+
+          <property name="java.io.tmpdir" value="/tmp" />
+
+          <property name="ant.core.lib" value="/home/lucky/Desktop/ant/apache-ant-1.10.7/lib/ant.jar" />
+
+          <property name="line.separator" value="&#xa;" />
+
+          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="os.name" value="Linux" />
+
+          <property name="ant.home" value="/home/lucky/Desktop/ant/apache-ant-1.10.7" />
+
+          <property name="ant.project.name" value="HelloWorld" />
+
+          <property name="sun.jnu.encoding" value="UTF-8" />
+
+          <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib/x86_64-linux-gnu/jni:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/lib/jni:/lib:/usr/lib" />
+
+          <property name="jarname" value="build/jar/HelloWorld.jar" />
+
+          <property name="java.class.version" value="52.0" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+
+          <property name="class_" value="build/classes" />
+
+          <property name="build_" value="build" />
+
+          <property name="os.version" value="5.0.0-32-generic" />
+
+          <property name="ant.file" value="/home/lucky/Desktop/HelloWorld/build.xml" />
+
+          <property name="test_" value="build/test" />
+
+          <property name="user.home" value="/home/lucky" />
+
+          <property name="user.timezone" value="" />
+
+          <property name="java.awt.printerjob" value="sun.print.PSPrinterJob" />
+
+          <property name="java.specification.version" value="1.8" />
+
+          <property name="file.encoding" value="UTF-8" />
+
+          <property name="java.class.path" value="/home/lucky/Desktop/HelloWorld/build/classes:/home/lucky/Desktop/HelloWorld/lib/junit-4.9.jar:/home/lucky/Desktop/ant/apache-ant-1.10.7/lib/ant-launcher.jar:/home/lucky/Desktop/ant/apache-ant-1.10.7/lib/ant.jar:/home/lucky/Desktop/ant/apache-ant-1.10.7/lib/ant-junit.jar:/home/lucky/Desktop/ant/apache-ant-1.10.7/lib/ant-junit4.jar" />
+
+          <property name="user.name" value="lucky" />
+
+          <property name="java.vm.specification.version" value="1.8" />
+
+          <property name="java.home" value="/usr/lib/jvm/java-8-openjdk-amd64/jre" />
+
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner HelloWorldTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/lucky/Desktop/HelloWorld/build/test/TEST-HelloWorldTest.xml crashfile=/home/lucky/Desktop/HelloWorld/junitvmwatcher278443203521939790.properties propsfile=/home/lucky/Desktop/HelloWorld/junit4569821319342333020.properties" />
+
+          <property name="sun.arch.data.model" value="64" />
+
+          <property name="java.specification.vendor" value="Oracle Corporation" />
+
+          <property name="user.language" value="en" />
+
+          <property name="awt.toolkit" value="sun.awt.X11.XToolkit" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.version" value="1.8.0_222" />
+
+          <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/ext:/usr/java/packages/lib/ext" />
+
+          <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes" />
+
+          <property name="java.vendor" value="Private Build" />
+
+          <property name="file.separator" value="/" />
+
+          <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="ant.file.type.HelloWorld" value="file" />
+
+          <property name="ant.file.type" value="file" />
+
+          <property name="sun.desktop" value="gnome" />
+
+          <property name="sun.cpu.isalist" value="" />
+
+      </properties>
+
+      <testcase classname="HelloWorldTest" name="testHello" time="0.018" />
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+</testsuites>

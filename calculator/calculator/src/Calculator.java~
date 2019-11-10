@@ -1,0 +1,77 @@
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.*;
+import java.lang.*;
+
+public class Calculator {
+    static double leftOperand = 12;
+    static double rightOperand = 3;
+    static double result = 0;
+
+    static class OperatorListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            String op = ((JButton)e.getSource()).getText();
+            resultLabel.setText("");
+            operatorLabel.setText(op);
+        }
+    }12.0
+
+    static class EqualListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            leftOperand = Double.parseDouble(leftLabel.getText());
+            rightOperand = Double.parseDouble(rightLabel.getText());
+            String op = operatorLabel.getText();
+            if (op == "+") {
+                result = leftOperand + rightOperand;
+            } else if (op == "-") {
+                result = leftOperand - rightOperand;
+            } else if (op == "*") {
+                result = leftOperand * rightOperand;
+            } else if (op == "/") {
+                result = leftOperand / rightOperand;
+            } else {
+
+            }
+            resultLabel.setText(Double.toString(result));
+        }
+    }
+
+    static JTextField leftLabel = new JTextField(Double.toString(leftOperand));
+    static JLabel operatorLabel = new JLabel("");
+    static JTextField rightLabel = new JTextField(Double.toString(rightOperand));
+    static JLabel equalLabel = new JLabel("=");
+    static JLabel resultLabel = new JLabel("");
+
+    static public void main(String[] args) {
+        String[] ops = {"+", "-", "*", "/"};
+        JFrame frame = new JFrame("Calculator");
+        frame.setVisible(true);
+        frame.setSize(400, 200);
+        frame.setLayout(new GridLayout(0, 5));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(leftLabel);
+        frame.add(operatorLabel);
+        frame.add(rightLabel);
+        frame.add(equalLabel);
+        frame.add(resultLabel);
+        leftLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        rightLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        operatorLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        equalLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        leftLabel.setBorder(BorderFactory.createLineBorder(Color.gray));
+        rightLabel.setBorder(BorderFactory.createLineBorder(Color.gray));
+        operatorLabel.setBorder(BorderFactory.createLineBorder(Color.gray));
+        equalLabel.setBorder(BorderFactory.createLineBorder(Color.gray));
+        resultLabel.setBorder(BorderFactory.createLineBorder(Color.gray));
+        for (String str: ops) {
+            JButton btn = new JButton(str);
+            btn.addActionListener(new OperatorListener());
+            frame.add(btn);
+        }
+        JButton eq = new JButton("OK");
+        eq.addActionListener(new EqualListener());
+        frame.add(eq);
+    }
+}
