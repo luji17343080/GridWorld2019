@@ -47,21 +47,21 @@
 - java的初步学习  
 这一部分实在不知道怎么写才好，要说java的东西还是特别多的，但一些基本的在之前都已经学过了，也没啥好写的。其他的写也写不完，所以就谈一谈这一次简单计算器涉及到的Swing的基本知识吧（包名：javax.swing.*）。参考：https://www.yiibai.com/swing  
    - 首先是一些基本的类  
-      - JTextField：允许编辑单行文本的组件。此次用到的构造函数是JTextField(String text)，即使用指定文本初始化TextFielld
+      - JTextField类：允许编辑单行文本的组件。此次用到的构造函数是JTextField(String text)，即使用指定文本初始化TextFielld
       - JLabel类：显示文本或图像。通过在显示区域中设置垂直和水平对齐来对齐标签的内容。默认情况下，标签在显示区域中垂直居中，纯文本标签前沿对齐，仅图像标签水平居中。此次用到的构造函数为JLabel(String text),即使用指定文本初始化Label。
       - JButton：按钮，可以有文本或者图像标签，按下时发生指定事件。此次用到的构造函数是JButton(String text)，可以创建一个有指定文本的Button。  
-      - JFrame：
+      - JFrame：构造一个**最初不可见**的框架。此次用到的构造函数是JFrame(String title)，可以创建一个标题为title的Frame。
+      - ActionEvent类：使用addActionListener()方法添加监听器（事件）。动作事件发生时，将调用void actionPerformed(ActionEvent e)。
+      - GridLayout类：将组件排列在矩形网格中。此次用到的构造函数是GridLayout(int rows, int cols),可以创建具有指定行数和列数的网格布局。
    - 其他一些函数  
       - void setText(String text)：定义此组件将显示的单行文本  
       - String getText()：返回标签显示的文本字符串
-      - getActionCommand()：
-      - void actionPerformed(ActionEvent e)：
-      - setSize()：
-      - setLayout():
-      - setDefaultCloseOperation()：
-      - setVisible()：
+      - String getActionCommand()：返回ActionEvent的命令  
+      - void setSize(length， width)：设置网格框架的长宽
+      - void setLayout(GridLayout):设置网格的布局
+      - setDefaultCloseOperation()：设置默认的操作
+      - void setVisible(bool)：设置网格是否可见
       - void setHorizontalAlignment(int alignment)：设置标签内容沿x方向对齐  
-      - void addActionListener()：
    - Pattern库：可以用来定义一个正则规则，用于判定一个字符串是否代表数字，下面是这次简单计算器的例子  
    ![](images/pa.png)  
 - 简单java程序HelloWorld的测试  
