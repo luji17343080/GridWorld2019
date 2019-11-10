@@ -45,13 +45,35 @@
 ## Java学习  
 - java的安装和环境配置由于在之前就已经弄好了（本地和云桌面都如此），所以就不在给出过程了。  
 - java的初步学习  
-
+这一部分实在不知道怎么写才好，要说java的东西还是特别多的，但一些基本的在之前都已经学过了，也没啥好写的。其他的写也写不完，所以就谈一谈这一次简单计算器涉及到的Swing的基本知识吧（包名：javax.swing.*）。参考：https://www.yiibai.com/swing  
+   - 首先是一些基本的类  
+      - JTextField：允许编辑单行文本的组件。此次用到的构造函数是JTextField(String text)，即使用指定文本初始化TextFielld
+      - JLabel类：显示文本或图像。通过在显示区域中设置垂直和水平对齐来对齐标签的内容。默认情况下，标签在显示区域中垂直居中，纯文本标签前沿对齐，仅图像标签水平居中。此次用到的构造函数为JLabel(String text),即使用指定文本初始化Label。
+      - JButton：按钮，可以有文本或者图像标签，按下时发生指定事件。此次用到的构造函数是JButton(String text)，可以创建一个有指定文本的Button。  
+      - JFrame：
+   - 其他一些函数  
+      - void setText(String text)：定义此组件将显示的单行文本  
+      - String getText()：返回标签显示的文本字符串
+      - getActionCommand()：
+      - void actionPerformed(ActionEvent e)：
+      - setSize()：
+      - setLayout():
+      - setDefaultCloseOperation()：
+      - setVisible()：
+      - void setHorizontalAlignment(int alignment)：设置标签内容沿x方向对齐  
+      - void addActionListener()：
+   - Pattern库：可以用来定义一个正则规则，用于判定一个字符串是否代表数字，下面是这次简单计算器的例子  
+   ![](images/pa.png)  
 - 简单java程序HelloWorld的测试  
     - 程序内容  
     ![](images/java0.png)  
       
     - 进入程序所在的目录，在终端通过命令"javac HelloWorld.java"编译得到".class"文件，再通过命令"java HelloWorld"运行程序  
     ![](images/java1.png)  
+- 小结  
+这部分的小结就列一些我在实验中遇到的一些需要注意的地方吧
+   - java和javac版本要保持一致  
+   - 在终端用"java"运行java类时，在找jdk时，可能不会找系统的默认环境（apt中的，也就是"java -version"命令寻找的环境，这一点我感觉很奇怪），所以要单独设置一个环境变量（或者在编译的时候加上jdk的路径）。这里我始终是没弄明白，虽然最后问题解决了，但关于环境变量的问题我还是存在疑惑（好像整个阶段一都充满了环境方面的问题，代码实现倒不是很难）。  
       
 ## Ant学习  
 - 首先是ant的安装以及环境配置（本地环境：ubuntu18）  
@@ -151,4 +173,28 @@
 
         
 ## Junit学习  
-JUnit是一个Java语言的单元测试框架。
+JUnit是一个Java语言的单元测试框架，用来判断程序的执行结果与自己期望的结果是否一致。要知道，通常测试Jave代码的方法是新建一个类，然后在其中创建一个main()函数，在main中编写测试代码。而当遇到代码量很大时，这样会大大的增加测试的复杂度，降低程序员的测试积极性。而Junit则简化了单元测试，写一点测一点，在编写以后的代码中如果发现问题可以较快的追踪到问题的原因，减小回归错误的纠错难度。  
+### Junit-4基本语法  
+- "@"方法  
+   - @Test: 测试方法，如果程序的执行能在100毫秒之内完成，则测试通过  
+   - @Ignore: 忽略方法，暂时不运行此段代码  
+   - @Before：在test方法之前运行  
+   - @After: 在test方法之后运行  
+- assertEquals函数：判断两个参数的值是否相等（注意类型要一致）  
+- 一些基本原则  
+   - 测试方法前（@Test后面的函数块）必须使用public void 进行修饰，不能带任何的参数,且在之前必须跟"@Test"   
+   - 习惯上测试类名用"Test"作为后缀，测试方法用"test"作为前缀  
+   - 测试类所在的包名必须和被测试类所在的包名保持一致  
+  
+### HelloWorld的Junit测试  
+- 先在官网下载junit-4.9.jar包，将其放在HelloWorld.java目录下  
+![](images/junit1.png)  
+  
+- 编写HelloWorldTest.java（注意junit-3版本和junit-4版本的库函数不一样，所以语法上有差异，我开始在这里进入了一个大坑)  
+![](images/junit2.png)  
+    
+- 编译和运行（编译时要包含.jar文件，运行时要包含HelloWorldTest中运用到的库）  
+![](images/junit0.png)  
+  
+- 小结  
+总的来说，我感觉Junit最大的坑应该是包的依赖的问题吧，特别是在将junit单元测试的编译和运行写进build.xml通过ant运行时。因为ant不会自动去找Test中import的库，所以include的问题困扰了我很久，查了很多资料以及前辈的代码，最终才艰难的完成了。  
