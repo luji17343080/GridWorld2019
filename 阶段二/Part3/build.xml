@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Jumper" default="test">
+    <property name="build_" value="build"/>
+    <property name="jar_" value="build/jar"/>
+    <property name="jarname" value="build/jar/Jumper.jar"/>
+    <property name="class_" value="build/classes"/>
+    <property name="report_" value="build/report"/>
+    <property name="test_" value="build/test"/>
+    <path id="classpath"> 
+        <fileset dir="lib" includes="*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build_}"/>
+    </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="${class_}"/>
+        <mkdir dir="${jar_}"/>
+	<mkdir dir="${report_}"/>
+        <mkdir dir="${test_}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="src" destdir="${class_}" classpathref="classpath" includeantruntime="false"/>
+    </target>
+
+    <target name="jar" depends="compile">
+        <jar jarfile="${jarname}" basedir="${class_}"/>
+    </target>
+
+    <target name="run" depends="jar">
+        <java classname="JumperRunner" classpath="${class_}" classpathref="classpath"/>
+    </target>
+
+    <target name="compile-test">
+        <javac srcdir="test" destdir="${class_}" classpathref="classpath" includeantruntime="false"/>
+    </target>
+
+    <target name="test" depends="compile-test, compile">
+        <junit printsummary="on">
+            <classpath>
+                <pathelement location="build/classes/Jumper.class" />
+		<path refid="classpath"/>
+            </classpath>
+	    <formatter type="xml"/>
+            <batchtest fork="yes" todir="${test_}">
+                <fileset dir="${class_}" includes="*Test.class"/>
+            </batchtest>
+	</junit>
+        <junitreport todir="${test_}">
+            <fileset dir="${test_}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${report_}"/>
+        </junitreport>
+
+
+    </target>
+
+</project>
+

@@ -1,0 +1,4 @@
+1.JumperTest.java在test文件夹中
+2.Jumper.java和JumperRunner.java在src文件夹中
+3.build文件夹中包含了junit的测试报告
+4.lib文件夹为项目依赖的包
