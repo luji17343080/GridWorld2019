@@ -5,6 +5,9 @@ The source code for the AbstractGrid class is in Appendix D.
 
 答：`isValid`方法在`Grid`接口中被定义  
 ```java
+
+    // @file: info/grid/Grid.java
+    // @line: 43-50
     /**
      * Checks whether a location is valid in this grid. <br />
      * Precondition: <code>loc</code> is not <code>null</code>
@@ -16,14 +19,16 @@ The source code for the AbstractGrid class is in Appendix D.
 ```  
 在`BoundedGrid`类和`UnbounedGrid`类中被实现  
    ```java
-    // BoundedGrid
+    // @file: info/grid/BoundedGrid.java
+    // @line: 60-64
     public boolean isValid(Location loc)
     {
         return 0 <= loc.getRow() && loc.getRow() < getNumRows()
                 && 0 <= loc.getCol() && loc.getCol() < getNumCols();
     }
 
-    // UnbounedGrid
+    // @file: info/grid/UnbounedGrid.java
+    // @line: 53-55
     public boolean isValid(Location loc)
     {
         return true;
@@ -33,6 +38,8 @@ The source code for the AbstractGrid class is in Appendix D.
   
 答：`getValidAdjacentLocations`方法：用`isValid`方法判断一个位置的相邻位置是否在边界内。实际上另外几个方法的实现也有这一层逻辑，但包括`getEmptyAdjacentLocations`方法、`getOccupiedAdjacentLocations`方法都调用了`getValidAdjacentLocations`方法，所以就不需要再调用`isValid`方法，而`getNeighbors`方法又调用了`getOccupiedAdjacentLocations`方法，所以也不需要调用`isValid`方法。  
    ```java
+    // @file: info/grid/AbstractGrid.java
+    // @line: 36-49
     public ArrayList<Location> getValidAdjacentLocations(Location loc)
     {
         ArrayList<Location> locs = new ArrayList<Location>();
@@ -52,9 +59,12 @@ The source code for the AbstractGrid class is in Appendix D.
 
 答：`getNeighbors`方法中调用了`Grid`接口中的`get`方法。`get`方法在`BoundedGrid`类和`UnbounedGrid`类中被分别实现   
    ```java
+    // @file: info/grid/Grid.java
+    // @line: 72-79 
     // Grid接口中的get方法
     E get(Location loc);
-
+    // @file: info/grid/AbstractGrid.java
+    // @line: 28-34
     // AbstractGrid class中的 getNeighbors 方法
     public ArrayList<E> getNeighbors(Location loc)
     {
@@ -64,6 +74,8 @@ The source code for the AbstractGrid class is in Appendix D.
         return neighbors;
     }
 
+    // @file: info/grid/BoundedGrid.java
+    // @line: 85-91
     // `BoundedGrid`类中的get
     public E get(Location loc)
     {
@@ -72,7 +84,8 @@ The source code for the AbstractGrid class is in Appendix D.
                     + " is not valid");
         return (E) occupantArray[loc.getRow()][loc.getCol()]; // unavoidable warning
     }
-
+    // @file: info/grid/UnboundedGrid.java
+    // @line: 66-71
     // `UnboundedGrid`类中的get
     public E get(Location loc)
     {
@@ -85,6 +98,8 @@ The source code for the AbstractGrid class is in Appendix D.
 
 答：`getEmptyAdjacentLocations`方法只是需要获得空的邻居位置，其中调用`get`方法是为了判断邻居位置是否存在`object`
    ```java
+    // @file: info/grid/AbstractGrid.java
+    // @line: 51-60
     // getEmptyAdjacentLocations方法
     public ArrayList<Location> getEmptyAdjacentLocations(Location loc)
     {
@@ -101,6 +116,8 @@ The source code for the AbstractGrid class is in Appendix D.
 
 答：如果用`Location.RIGHT`（90）替换了`Location.HALF_RIGHT`（45），那么在找相邻位置时就会忽略掉`东北`、`东南`、`西南`、`西北`这四个位置，即会在原来的基础上少四个位置，而在整个`Grid`中，我们规定的`actors`是会沿着`45°`方向移动的，所以会造成`actor`的运动改变。   
    ```java
+    // @file: info/grid/AbstractGrid.java
+    // @line: 36-49
    // getValidAdjacentLocations方法
     public ArrayList<Location> getValidAdjacentLocations(Location loc)
     {
@@ -125,6 +142,8 @@ The source code for the BoundedGrid class is in Appendix D.
 
 答：`BoundedGrid`类的构造函数：`public BoundedGrid(int rows, int cols)`，其中当rows或者cols小于等于0时会报错。  
    ```java
+    // @file: info/grid/BoundedGrid.java
+    // @line: 39-46
     public BoundedGrid(int rows, int cols)
     {
         if (rows <= 0)
@@ -138,8 +157,12 @@ The source code for the BoundedGrid class is in Appendix D.
 
 答：因为使用二维数组的形式存储`Grid`中的`节点`，所以在`getNumCols`，`Grid`的列数`columns`是通过数组的`第0行`的`列数`获得的  
    ```java
+    // @file: info/grid/BoundedGrid.java
+    // @line: 31
     private Object[][] occupantArray; // the array storing the grid elements
-
+    
+    // @file: info/grid/BoundedGrid.java
+    // @line: 85-91
     public int getNumCols()
     {
         // Note: according to the constructor precondition, numRows() > 0, so
@@ -152,6 +175,8 @@ The source code for the BoundedGrid class is in Appendix D.
 
 答：需要该位置的`行数`和`列数`在规定的矩阵范围内（`大于等于0`且小于等于`最大行数`（最大列数））  
    ```java
+    // @file: info/grid/BoundedGrid.java
+    // @line: 60-64
     // BoundedGrid类中的isValid函数
     public boolean isValid(Location loc)
     {
@@ -166,6 +191,8 @@ In the next four questions, let r = number of rows, c = number of columns, and n
 
 答：`getOccupiedLocations`方法会返回一个`Location`的`ArrayList`，它的`size`为n。时间复杂度为`O(r*c)` (`for循环`遍历`Grid`上所有位置)  
    ```java
+    // @file: info/grid/BoundedGrid.java
+    // @line: 66-80
     public ArrayList<Location> getOccupiedLocations()
     {
         ArrayList<Location> theLocations = new ArrayList<Location>();
@@ -190,6 +217,8 @@ In the next four questions, let r = number of rows, c = number of columns, and n
 
 答：由`get`方法的代码可知，其返回类型为一个`E`类型的`object`；需要的参数为一个`Location`；时间复杂度为`O(1)` (直接访问数组的一个对象)  
    ```java
+    // @file: info/grid/BoundedGrid.java
+    // @line: 85-91
     public E get(Location loc)
     {
         if (!isValid(loc))
@@ -202,6 +231,8 @@ In the next four questions, let r = number of rows, c = number of columns, and n
 
 答：当指定要添加一个`E`类型`object`的`Location`不在`Grid`内以及要添加的`object`为空时会`抛出异常`.时间复杂度为`O(1)` (直接访问数组的一个元素)  
    ```java
+    // @file: info/grid/BoundedGrid.java
+    // @line: 93-105
     public E put(Location loc, E obj)
     {
         if (!isValid(loc))
@@ -220,6 +251,8 @@ In the next four questions, let r = number of rows, c = number of columns, and n
 
 答：`remove`方法返回一个`E`类型的`object`；当调用`remove`方法从一个空的位置删除一个`item`时，会抛出异常`Location + "loc" + is not valid`(如果题目中的`空的位置`是指该位置没有任何`object`，那么就不会报错)；时间复杂度为`O(1)`(直接访问数组中的某个元素)  
    ```java
+    // @file: info/grid/BoundedGrid.java
+    // @line: 107-117
     // remove函数
     public E remove(Location loc)
     {
@@ -248,12 +281,15 @@ The source code for the UnboundedGrid class is in Appendix D.
 
 答：因为在`UnboundedGrid`类中，任何一个`Location`都应该是合法的，只有当程序出错（`Grid`创建错误）时，即某个`Location`未创建成功时才会报错，所以`get`、`put`、`remove`方法中才会先判断`loc`是否创建成功；而在`BoundedGrid`类中只需在`isValid`方法中判断一个位置是否在`Grid`外即可以判断该位置是否创建成功，所以在`get`、`put`和`remove`方法中就只需检验一个`Location`是否合法就行了。  
    ```java
+    // @file: info/grid/UnboundedGrid.java
+    // @line: 53-56
    // `UnboundedGrid`类中的isValid方法和get方法
     public boolean isValid(Location loc)
     {
         return true;
     }
-
+    // @file: info/grid/UnboundedGrid.java
+    // @line: 66-71
     public E get(Location loc)
     {
         if (loc == null)
@@ -261,6 +297,8 @@ The source code for the UnboundedGrid class is in Appendix D.
         return occupantMap.get(loc);
     }
 
+    // @file: info/grid/BoundedGrid.java
+    // @line: 60-64
     // `BoundedGrid`类中的isValid方法和get方法
     public boolean isValid(Location loc)
     {
@@ -268,6 +306,8 @@ The source code for the UnboundedGrid class is in Appendix D.
                 && 0 <= loc.getCol() && loc.getCol() < getNumCols();
     }
 
+    // @file: info/grid/UnboundedGrid.java
+    // @line: 66-71
     public E get(Location loc)
     {
         if (!isValid(loc))
@@ -286,4 +326,4 @@ The source code for the UnboundedGrid class is in Appendix D.
 
 5.Could a map implementation be used for a bounded grid? What advantage, if any, would the two-dimensional array implementation that is used by the BoundedGrid class have over a map implementation?  
 
-答：`Map`可以用于实现有边界`Grid`（Code联系里就会实现）。`二维数组`实现可以通过设置`数组`的大小来分配一个`固定的内存`，相对于`Map`，`二维数组`实现`有界Grid`会节省一些内存。  
+答：`Map`可以用于实现有边界`Grid`（Code联系里就会实现）。`二维数组`实现可以通过设置`数组`的大小来分配一个`固定的内存`，相对于`Map`，当`Grid`中的大部分位置都`被占用`时，`二维数组`实现`有界Grid`会节省一些内存。  
